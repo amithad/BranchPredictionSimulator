@@ -4,11 +4,12 @@
 #include "Predictor.h"
 
 #define FILE_TARGET "/home/amitha/CLionProjects/BHTPerf/BranchPredictionSimulator/traces/"
-#define FILE_NAME "sample"
+#define FILE_NAME "12queens"
+#define PREDICTOR_ID 4
 
 void startSequencer(int predictorID, string fileName);
 
-void invokePredictor(int predictorID, Predictor *p, int branch, int value);
+void invokePredictor(int predictorID, Predictor *p, unsigned int branch, int value);
 
 bool printPredictorType(int predictorID) ;
 
@@ -16,13 +17,12 @@ using namespace std;
 
 
 int main() {
-    startSequencer(4, FILE_NAME);
+    startSequencer(PREDICTOR_ID, FILE_NAME);
     return 0;
 }
 
-void invokePredictor(int predictorID, Predictor *p, int branch, int value) {
-    //bool result =
-    p->takeBranch(predictorID, branch, value);
+void invokePredictor(int predictorID, Predictor *p, unsigned int branch, int value) {
+    bool result = p->takeBranch(predictorID, branch, value);
     //cout << branch << " " << value << " " << (result ? "BRANCH" : "NO") << endl;
 }
 
@@ -37,7 +37,7 @@ void startSequencer(int predictorID, string fileName) {
             char *str = (char *) line.c_str();
             char *pch;
             pch = strtok(str, ", ");
-            int branch = atoi(pch);
+            unsigned int branch = (unsigned int) atoi(pch);
             pch = strtok(NULL, ", ");
             int value = atoi(pch);
             invokePredictor(predictorID, p1, branch, value); //calls the relevant Predictor

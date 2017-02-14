@@ -33,7 +33,7 @@ Predictor::Predictor() {
     }
 }
 
-bool Predictor::takeBranch(int predictorID, int branch, int value) {
+bool Predictor::takeBranch(int predictorID, unsigned int branch, int value) {
 
     switch (predictorID) {
         case 1:
@@ -50,11 +50,11 @@ bool Predictor::takeBranch(int predictorID, int branch, int value) {
     }
 }
 
-bool Predictor::BHTOneBit(int branch, int value) {
+bool Predictor::BHTOneBit(unsigned int branch, int value) {
     totalBranches++;
     findIfUnique(branch); //stat collector call
 
-    int pos = branch % BHT_SIZE;
+    int pos = branch % BHT_SIZE-1;
     int result = BHT.at(pos);
     BHT[pos] = value;
 
@@ -67,7 +67,7 @@ bool Predictor::BHTOneBit(int branch, int value) {
     return result == 1;
 }
 
-bool Predictor::BHTTwoBit(int branch, int value) {
+bool Predictor::BHTTwoBit(unsigned int branch, int value) {
     totalBranches++;
     findIfUnique(branch); //stat collector call
 
@@ -112,7 +112,7 @@ bool Predictor::BHTTwoBit(int branch, int value) {
     }
 }
 
-bool Predictor::BHTTwoByTwo(int branch, int value) {
+bool Predictor::BHTTwoByTwo(unsigned int branch, int value) {
     totalBranches++;
     findIfUnique(branch); //stat collector call
 
@@ -160,7 +160,7 @@ bool Predictor::BHTTwoByTwo(int branch, int value) {
     }
 }
 
-bool Predictor::BHTOptimized(int branch, int value) {
+bool Predictor::BHTOptimized(unsigned int branch, int value) {
     totalBranches++;
     findIfUnique(branch); //stat collector call
 

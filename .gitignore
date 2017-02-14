@@ -4,3 +4,8 @@
 *.iws
 
 cmake-build-debug/
+traces/12queens
+traces/fib30
+traces/matmul
+traces/ray
+

@@ -19,13 +19,12 @@
 #define BHT_CUSTOM_SIZE 32
 #define BHT_CUSTOM_GBH_BITS 7
 
-
 using namespace std;
 
 class Predictor {
 public:
     Predictor();
-    bool takeBranch(int PredictorID, int branch, int value); //called by Daemon to decide on branching
+    bool takeBranch(int PredictorID, unsigned int branch, int value); //called by Daemon to decide on branching
     void printStats(); //views the results
 
 private:
@@ -41,15 +40,15 @@ private:
     int customGHSize;
     unsigned int customGBH;
 
-    bool BHTOneBit(int branch, int value); //8192 BHT
-    bool BHTTwoBit(int branch, int value); //2-bit 4096 BHT
-    bool BHTTwoByTwo(int branch, int value); //2,2 1024 BHT
+    bool BHTOneBit(unsigned int branch, int value); //8192 BHT
+    bool BHTTwoBit(unsigned int branch, int value); //2-bit 4096 BHT
+    bool BHTTwoByTwo(unsigned int branch, int value); //2,2 1024 BHT
     void findIfUnique(int branch);
     void updateGBH(bool branchTaken);
 
     //optimized
     void updateCustomGBH(bool branchTaken);
-    bool BHTOptimized(int branch, int value); //Custom
+    bool BHTOptimized(unsigned int branch, int value); //Custom
 
     //====stats====================
     int totalBranches;
