@@ -54,7 +54,7 @@ bool Predictor::BHTOneBit(unsigned int branch, int value) {
     totalBranches++;
     findIfUnique(branch); //stat collector call
 
-    int pos = branch % BHT_SIZE-1;
+    int pos = branch % BHT_SIZE;
     int result = BHT.at(pos);
     BHT[pos] = value;
 
@@ -227,12 +227,12 @@ void Predictor::updateCustomGBH(bool branchTaken) { //bit shift
 
 void Predictor::printStats() {
     cout << "============================================================" << endl;
-    cout << "\tTotal no of branches\t\t\t\t\t: " << totalBranches << endl;
-    cout << "\tNo of unique branches\t\t\t\t\t: " << branches.size() << endl;
-    cout << "\tNo of branches correctly predicted\t\t: " << correctPredictions << endl;
-    cout << "\tNo of branches incorrectly predicted\t: " << incorrectPredictions << endl;
+    cout << "Total no of branches: " << totalBranches << endl;
+    cout << "No of unique branches: " << branches.size() << endl;
+    cout << "No of branches correctly predicted: " << correctPredictions << endl;
+    cout << "No of branches incorrectly predicted: " << incorrectPredictions << endl;
     float misPredictionRate = (float) (incorrectPredictions * 1.0 / totalBranches);
-    cout << "\tMis-prediction rate\t\t\t\t\t\t: " << misPredictionRate << endl;
+    cout << "Mis-prediction rate: " << misPredictionRate << endl;
     cout << "============================================================" << endl;
 }
 

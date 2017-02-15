@@ -4,20 +4,21 @@
 #include "Predictor.h"
 
 #define FILE_TARGET "/home/amitha/CLionProjects/BHTPerf/BranchPredictionSimulator/traces/"
-#define FILE_NAME "12queens"
+#define FILE_NAME "ray"
 #define PREDICTOR_ID 4
 
 void startSequencer(int predictorID, string fileName);
 
 void invokePredictor(int predictorID, Predictor *p, unsigned int branch, int value);
 
-bool printPredictorType(int predictorID) ;
+bool printPredictorType(int predictorID);
 
 using namespace std;
 
 
-int main() {
-    startSequencer(PREDICTOR_ID, FILE_NAME);
+int main(int argc, char* argv[]) {
+    //startSequencer(PREDICTOR_ID, FILE_NAME);
+    startSequencer(atoi(argv[1]), argv[2]);
     return 0;
 }
 
@@ -44,7 +45,7 @@ void startSequencer(int predictorID, string fileName) {
         }
         myFile.close();
     } else {
-        cout << "Unable to locate file. Exiting..";
+        cout << "Unable to locate file. Exiting.." <<endl;
         exit(-1);
     }
     p1->printStats();

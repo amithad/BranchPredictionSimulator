@@ -2,6 +2,7 @@
 .idea/
 *.iml
 *.iws
+CMakeLists.txt
 
 cmake-build-debug/
 traces/12queens

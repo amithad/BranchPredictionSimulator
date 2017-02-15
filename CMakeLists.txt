@@ -8,4 +8,4 @@ set(SOURCE_FILES
         Predictor.cpp
         Predictor.h)
 
-add_executable(BranchPredictionSimulator ${SOURCE_FILES})
+add_executable(BPAnalysis ${SOURCE_FILES})
