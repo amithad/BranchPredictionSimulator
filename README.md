@@ -10,5 +10,5 @@ Instructions:
 
 2. Build the the project using the makefile provided.
 
-3. Execute the following command: ./BPAnalysis <PredictorID> <FileName>
+3. Execute the following command: ./BPAnalysis [PredictorID] [FileName]
 
